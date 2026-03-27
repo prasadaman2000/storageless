@@ -95,7 +95,7 @@ void Client::listen() {
         ssize_t bytes_sent = 0;
 
         while (bytes_sent < sizeof(Packet)) {
-            ssize_t sent = send(client_fd_, p + bytes_sent,
+            ssize_t sent = send(client_fd_, (char*)p + bytes_sent,
                 sizeof(Packet) - bytes_sent, 0);
             if (sent < 0) {
                 std::cout << "Could not send packet from client.\n";
