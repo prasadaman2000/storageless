@@ -22,8 +22,6 @@ Application::Application(std::string fwd_address, int fwd_port, int server_port)
                     std::cout << "Got new file from peer: " << packet_fname << "\n";
                 }
 
-                std::cout << "Received packet " << p->fname << ", " << p->chunk_seq_num << "/" << p->total_chunks << "\n";
-
                 bool intercepted = false;
                 if (auto iter =
                     retrieve_reqs_.find(std::string(p->fname, p->fname_size));

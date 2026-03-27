@@ -46,7 +46,8 @@ Packet* Server::NextPacket() {
             sizeof(Packet) - bytes_read, 0);
         if (recvd < 0) {
             std::cout << "recvd = " << recvd << " with errno " << errno << "\n";
-            continue;
+            delete p;
+            return nullptr;
         }
         // std::cout << "Read " << recvd << " bytes\n";
         bytes_read += recvd;
