@@ -45,7 +45,7 @@ Packet* Server::NextPacket() {
         ssize_t recvd = recv(client_socket_, p + bytes_read,
             sizeof(Packet) - bytes_read, 0);
         if (recvd < 0) {
-            std::cout << "recvd = " << recvd << "\n";
+            std::cout << "recvd = " << recvd << " with errno " << errno << "\n";
             continue;
         }
         // std::cout << "Read " << recvd << " bytes\n";
