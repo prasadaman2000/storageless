@@ -45,9 +45,8 @@ Packet* Server::NextPacket() {
         ssize_t recvd = recv(client_socket_, p + bytes_read,
             sizeof(Packet) - bytes_read, 0);
         if (recvd < 0) {
-            std::cout << "Could not read packet from client.\n";
-            delete p;
-            return nullptr;
+            std::cout << "recvd = " << recvd << "\n";
+            continue;
         }
         // std::cout << "Read " << recvd << " bytes\n";
         bytes_read += recvd;
