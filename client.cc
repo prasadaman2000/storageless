@@ -91,8 +91,18 @@ void Client::listen() {
             p = work_queue_.back();
             work_queue_.pop_back();
         }
-        int sent_size = send(client_fd_, p, sizeof(Packet), 0);
-        // std::cout << "Sent packet with " << p->chunk_size << " bytes.\n";
+
+        ssize_t bytes_sent = 0;
+
+        while (bytes_sent < sizeof(Packet)) {
+            ssize_t sent = send(client_fd_, p + bytes_sent,
+                sizeof(Packet) - bytes_sent, 0);
+            if (sent < 0) {
+                std::cout << "Could not send packet from client.\n";
+                break;
+            }
+            bytes_sent += sent;
+        }
         delete p;
     }
 }
