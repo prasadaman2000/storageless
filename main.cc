@@ -8,8 +8,6 @@
 usage: ./app <peer-ip> <peer-port> <server-port> <commit-retrieve-file> <out-file>
 */
 int main(int argc, char** argv) {
-    std::cout << "Here";
-
     int peer_port = atoi(argv[2]);
     int server_port = atoi(argv[3]);
 
