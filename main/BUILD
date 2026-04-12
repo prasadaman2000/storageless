@@ -36,6 +36,8 @@ cc_binary(
     srcs = ["main.cc"],
     deps = [
         ":app",
+        "@abseil-cpp//absl/flags:flag",
+        "@abseil-cpp//absl/flags:parse",
     ],
 )
 
